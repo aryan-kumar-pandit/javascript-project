@@ -7,7 +7,8 @@ let string="";
 //convert NodeList into array
 // can also use spread operator :  const arr = [...buttons];
 let arr=Array.from(buttons);
-
+// eval() is internal js method but we can use math.js cdn in vanila javascript
+// after ES6 we can also use import to use math.js
 arr.forEach(button=> {
     button.addEventListener('click',(e)=>{
         if(e.target.innerHTML == '=')
