@@ -26,6 +26,19 @@ body{
     font-size: 1.4rem;
     margin-block: 8px;
 }
+.inputBox{
+    position: relative;
+}
+.inputBox span{
+    position: absolute;
+    top: 16px;
+    right: 6px;
+    color: #000;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 2;
+
+}
 .passBox{
     background-color: #fff;
     border: none;
@@ -35,6 +48,7 @@ body{
     border-radius: 3px;
     font-size: 20px;
     margin-block: 8px;
+    text-overflow: ellipsis;
 }
 .row{
     display: flex;
