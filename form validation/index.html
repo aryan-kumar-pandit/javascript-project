@@ -17,17 +17,23 @@
             <p>
               <label for="name">Full Name</label>
               <input type="text" placeholder="Enter Name Here" id="name" required/>
+              <i class="fa-solid"></i>
+              <span id="nameError"></span>
             </p>
              <p>
               <label for="email">Email</label>
               <input type="email" placeholder="xyz@gmail.com" id="email" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+"/>
+              <i class="fa-solid"></i>
+              <span id="emailError"></span>
             </p>
              <p>
               <label for="password">Password</label>
               <input type="password" placeholder="At Least 8 Characters" id="password" required min="8" max="30"/>
+              <i class="fa-solid"></i>
+              <span id="passError"></span>
             </p>
             <p>
-                <input type="submit" value="Create Account">
+                <input type="submit" value="Create Account" id="submitBtn">
             </p>
           </form>
         </main>
@@ -36,5 +42,7 @@
         </footer>
       </div>
     </div>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="script.js"></script>
   </body>
 </html>

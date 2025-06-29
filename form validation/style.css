@@ -13,7 +13,7 @@
 
 }
 .box{
-
+    width: 400px;
     position: relative;
     top: 50%;
     left: 50%;
@@ -30,11 +30,21 @@
 }
 .signup-body p{
     margin-top: 20px;
+    position: relative;
     
+}
+.signup-body p i{
+    position: absolute;
+    top: 34px;
+    right: 16px;
+    color: #008000;
+    font-size: 22px;
+
 }
 .signup-body p label{
     font-size: 18px;
     font-weight: 600;
+    cursor: pointer;
 }
 .signup-body p input{
     width: 100%;
@@ -69,4 +79,9 @@
 
 .signup-footer p a:hover{
     text-decoration: underline;
+}
+.signup-body p span{
+    font-size: 18px;
+    font-weight: 600;
+    color: lightgreen;
 }
