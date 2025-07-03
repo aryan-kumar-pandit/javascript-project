@@ -1,6 +1,8 @@
 const searchBox = document.querySelector('.searchBox');
-const searchBtn = document.querySelector('.searchBtn');
-const receipeContainer = document.querySelector('.receipe-container');
+const searchBtn = document.querySelector('.searchBtn');// it is global variable. so eventlistner method is made outside
+const receipeContainer = document.querySelector('.receipe-container');//recipe-details-content
+const recipeDetailsContent = document.querySelector('.recipe-details-content');
+const recipeCloseBtn = document.querySelector('.recipe-close-btn');
 
 const fetchRecipes = async (query)=>{
 
@@ -23,6 +25,13 @@ const fetchRecipes = async (query)=>{
         const button = document.createElement('button');
         button.textContent = "View Recipe";
         recipeDiv.appendChild(button);
+
+        //adding eventListner to recipe button
+        button.addEventListener('click',()=>{
+            //open recipe popup
+            openRecipePopup(meal);
+        });
+
         receipeContainer.appendChild(recipeDiv);
         
     });
@@ -35,5 +44,13 @@ searchBtn.addEventListener('click',(e)=>{
     fetchRecipes(searchInput);
     //console.log("button clicked");
 });
+
+const openRecipePopup = (meal)=>{
+recipeDetailsContent.innerHTML =`
+<h2>${meal.strMeal}</h2>
+`
+recipeDetailsContent.parentElement.style.display = "block";
+}
+
 
 // the meal Db Api is used here. -- free api, no need to signup
