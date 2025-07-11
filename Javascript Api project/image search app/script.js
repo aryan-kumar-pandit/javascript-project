@@ -9,11 +9,17 @@ let page=1;
 
 //function to fetch images using unsplash api
 const fetchImages = async (query,pageNo)=>{
-    imagesContainer.innerHTML = '';
+    try {
+ 
+    if(pageNo===1){
+        imagesContainer.innerHTML = '';
+    }
+    
     const url = `https://api.unsplash.com/search/photos/?client_id=${accessKey}&query=${query}&per_page=28&page=${pageNo}`;
     const response = await fetch(url);
     const data = await response.json();
     //console.log(data);
+    if(data.results.length>0){
     data.results.forEach(photo => {
         const imageElement = document.createElement('div');
         imageElement.classList.add('imageDiv');
@@ -32,6 +38,22 @@ const fetchImages = async (query,pageNo)=>{
         imageElement.appendChild(overlayElement);
         imagesContainer.appendChild(imageElement);
     });
+
+    if(data.total_pages===pageNo){
+        loadMoreBtn.style.display ="none";
+    }
+    else{
+        loadMoreBtn.style.display ="block";
+    }
+}
+else{
+    imagesContainer.innerHTML =`<h2>Image Not Found !!!</h2>`;
+}
+       
+    } catch (error) {
+        imagesContainer.innerHTML =`<h2>Error Occured</h2>`;
+        loadMoreBtn.style.display = "none";
+    }
 };
 // adding event listner to search form
 searchForm.addEventListener('submit',(e)=>{
@@ -42,6 +64,9 @@ searchForm.addEventListener('submit',(e)=>{
         fetchImages(inputText,page);
     }else{
         imagesContainer.innerHTML =`<h2>Please enter a search query.</h2>`;
+        if(loadMoreBtn.style.display === "block"){
+            loadMoreBtn.style.display = "none";
+        }
     }
 });
 

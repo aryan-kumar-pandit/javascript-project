@@ -100,6 +100,7 @@ header form .search-container .material-icons{
     padding: 8px 12px;
     border-radius: 4px;
     cursor: pointer;
+    display: none;
 }
 
 main section{
