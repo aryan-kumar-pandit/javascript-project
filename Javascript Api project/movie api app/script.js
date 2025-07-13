@@ -64,6 +64,7 @@ searchForm.addEventListener('submit',(e)=>{
     e.preventDefault();
     const movieName=inputBox.value.trim();
     if(movieName !== ''){
+        showErrorMessage("Fetching Movie Information ....")
         getMovieInfo(movieName);
     }else{
        showErrorMessage("Please Enter Movie Name To Search");
