@@ -5,16 +5,24 @@ const inputBox = document.querySelector('.inputBox');
 
 //we will use omdb Api to fetch movie details
 const getMovieInfo = async(movie) =>{
+    try {
     const myApiKey = "4bc8155c";
     const url = `http://www.omdbapi.com/?apikey=${myApiKey}&t=${movie}`;
     const response = await fetch(url);
+    if(!response.ok){
+        throw new Error("Unable to fetch movie detail");
+    }
     const data = await response.json();
 
     showMovieData(data);
+      } catch (error) {
+        showErrorMessage("No Movie Found");
+    }
 };
 
 const showMovieData = (data)=>{
     movieContainer.innerHTML = "";
+    movieContainer.classList.remove('noBackground');
     //use array destructuring
     const {Title, imdbRating, Genre, Released, Runtime, Actors, Plot, Poster} = data;
 
@@ -44,6 +52,12 @@ const showMovieData = (data)=>{
     movieContainer.appendChild(moviePosterElement);
     movieContainer.appendChild(movieElement);
 
+};
+
+//function to display error message
+const showErrorMessage = (message) =>{
+    movieContainer.innerHTML = `<h2>${message}</h2>`;
+    movieContainer.classList.add('noBackground');
 }
 
 searchForm.addEventListener('submit',(e)=>{
@@ -51,6 +65,8 @@ searchForm.addEventListener('submit',(e)=>{
     const movieName=inputBox.value.trim();
     if(movieName !== ''){
         getMovieInfo(movieName);
+    }else{
+       showErrorMessage("Please Enter Movie Name To Search");
     }
 });
 
